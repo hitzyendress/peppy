@@ -8,7 +8,7 @@
    placeholder URL. Nothing else in this file needs to change.
    ------------------------------------------------------------ */
 const PEPPY_CONFIG = {
-  MENU_DOC_URL: "https://docs.google.com/document/d/YOUR-DOC-ID-HERE/edit"
+  MENU_DOC_URL: "https://docs.google.com/document/u/0/d/1_ung_6zDAxQi7HPWs_VQ_C1Sn5NKnwrmwB4dMuDFXgM/mobilebasic?pli=1"
 };
 /* ------------------------------------------------------------ */
 
