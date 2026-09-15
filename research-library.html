@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Library · Peppy Little Secret</title>
+<meta name="description" content="An educational library of peptides and research compounds, organized by category, with evidence levels and regulatory status.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var filterBtns = document.querySelectorAll(".filter-btn");
+  var blocks = document.querySelectorAll(".category-block");
+  var cards = document.querySelectorAll(".card");
+  var search = document.getElementById("librarySearch");
+  var noResults = document.getElementById("noResults");
+
+  function applyFilters() {
+    var activeCat = document.querySelector(".filter-btn.active").dataset.filter;
+    var query = search.value.trim().toLowerCase();
+    var anyVisible = false;
+
+    blocks.forEach(function(block) {
+      var catMatch = activeCat === "all" || block.dataset.category === activeCat;
+      var blockCards = block.querySelectorAll(".card");
+      var visibleInBlock = 0;
+      blockCards.forEach(function(card) {
+        var nameMatch = !query || card.dataset.name.indexOf(query) !== -1;
+        var show = catMatch && nameMatch;
+        card.style.display = show ? "" : "none";
+        if (show) visibleInBlock++;
+      });
+      block.style.display = (catMatch && visibleInBlock > 0) ? "" : "none";
+      if (visibleInBlock > 0) anyVisible = true;
+    });
+    noResults.style.display = anyVisible ? "none" : "block";
+  }
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      filterBtns.forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      applyFilters();
+    });
+  });
+  search.addEventListener("input", applyFilters);
+});
+</script>
+
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand-mark">
+      <span class="name">PEPPY LITTLE SECRET</span>
+      <span class="sub">To Feeling Good</span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" class="">HOME</a>
+<a href="research-library.html" class="current">RESEARCH LIBRARY</a>
+<a href="journal.html" class="">THE JOURNAL</a>
+<a href="about.html" class="">ABOUT</a>
+<a href="faq.html" class="">FAQ</a>
+
+    </nav>
+    <a href="contact.html" class="header-cta">CONTACT</a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html" class="">HOME</a>
+<a href="research-library.html" class="current">RESEARCH LIBRARY</a>
+<a href="journal.html" class="">THE JOURNAL</a>
+<a href="about.html" class="">ABOUT</a>
+<a href="faq.html" class="">FAQ</a>
+
+    <a href="contact.html">CONTACT</a>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:20px;">
+  <div class="wrap">
+    <span class="label">THE COMPLETE LIBRARY</span>
+    <h1 class="display-2">Research Library</h1>
+    <p class="lede">An educational reference on peptides and compounds referenced in scientific research — organized by area of interest, not by product. Every entry distinguishes preclinical findings from clinical evidence and FDA status.</p>
+    <div class="disclaimer"><strong>For research purposes only — not for human or veterinary use.</strong> Nothing on this page is medical advice, dosing guidance, or a purchasing mechanism.</div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="wrap">
+    <input type="text" class="search-input" id="librarySearch" placeholder="Search the library…">
+    <div class="filter-bar" id="filterBar"><button class="filter-btn active" data-filter="all">All Topics</button><button class="filter-btn" data-filter="metabolic">Metabolic Research</button><button class="filter-btn" data-filter="recovery">Recovery & Tissue Research</button><button class="filter-btn" data-filter="cellular">Cellular & Mitochondrial Research</button><button class="filter-btn" data-filter="skinhair">Skin & Hair Research</button><button class="filter-btn" data-filter="neuro">Neuro / Signaling Research</button><button class="filter-btn" data-filter="hormone">Reproductive & Hormone Signaling Research</button><button class="filter-btn" data-filter="support">Research Support</button></div>
+    <div id="libraryResults">
+      
+        <div class="category-block" data-category="metabolic">
+          <h2>Metabolic Research</h2>
+          <p class="cat-desc">Peptides and analogs studied for their effects on appetite, glucose regulation, and body-weight pathways.</p>
+          <div class="grid">
+            <div class="card" data-cat="metabolic" data-name="retatrutide">
+              <div class="swatch"></div>
+              <span class="tag">INVESTIGATIONAL — IN CLINICAL TRIALS</span>
+              <h3>Retatrutide</h3>
+              <p>A triple hormone-receptor agonist in Phase 3 clinical trials for obesity and related metabolic conditions.</p>
+              
+              <a href="research/retatrutide.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="metabolic" data-name="tirzepatide">
+              <div class="swatch"></div>
+              <span class="tag">FDA-APPROVED FOR A SPECIFIC USE</span>
+              <h3>Tirzepatide</h3>
+              <p>A dual GLP-1/GIP receptor agonist, FDA-approved under specific brand names for type 2 diabetes and chronic weight management.</p>
+              
+              <a href="research/tirzepatide.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="metabolic" data-name="cagrilintide">
+              <div class="swatch"></div>
+              <span class="tag">INVESTIGATIONAL — IN CLINICAL TRIALS</span>
+              <h3>Cagrilintide</h3>
+              <p>A long-acting amylin analog studied in combination with GLP-1 therapies for weight management.</p>
+              
+              <a href="research/cagrilintide.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="recovery">
+          <h2>Recovery & Tissue Research</h2>
+          <p class="cat-desc">Peptides studied in preclinical models for tissue repair and recovery-related pathways.</p>
+          <div class="grid">
+            <div class="card" data-cat="recovery" data-name="bpc-157">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>BPC-157</h3>
+              <p>A synthetic peptide fragment studied in preclinical models for gut and tissue-healing pathways.</p>
+              
+              <a href="research/bpc-157.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="recovery" data-name="tb-500">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>TB-500</h3>
+              <p>A synthetic peptide related to thymosin beta-4, studied in preclinical models of tissue repair.</p>
+              
+              <a href="research/tb-500.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="recovery" data-name="wolverine blend">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Wolverine Blend</h3>
+              <p>A blend combining BPC-157 and TB-500, two peptides studied separately in preclinical tissue-repair research.</p>
+              
+              <a href="research/wolverine.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="cellular">
+          <h2>Cellular & Mitochondrial Research</h2>
+          <p class="cat-desc">Compounds studied for roles in cellular energy metabolism and mitochondrial function.</p>
+          <div class="grid">
+            <div class="card" data-cat="cellular" data-name="mots-c">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>MOTS-c</h3>
+              <p>A mitochondrial-derived peptide studied for its role in cellular energy metabolism.</p>
+              
+              <a href="research/mots-c.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="cellular" data-name="nad+">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>NAD+</h3>
+              <p>A naturally occurring coenzyme central to cellular energy metabolism, studied in the context of aging and metabolic health.</p>
+              
+              <a href="research/nad.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="skinhair">
+          <h2>Skin & Hair Research</h2>
+          <p class="cat-desc">Copper peptides and related compounds studied in dermatological and tissue-remodeling research.</p>
+          <div class="grid">
+            <div class="card" data-cat="skinhair" data-name="ghk-cu">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>GHK-Cu</h3>
+              <p>A naturally occurring copper peptide studied in dermatological and tissue-remodeling research.</p>
+              
+              <a href="research/ghk-cu.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="skinhair" data-name="ahk-cu">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>AHK-Cu</h3>
+              <p>A copper tripeptide structurally related to GHK-Cu, studied in early cosmetic and dermatological research.</p>
+               <span class="tag" style="color:var(--stone)">Needs formulation info</span>
+              <a href="research/ahk-cu.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="skinhair" data-name="kpv">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>KPV</h3>
+              <p>A tripeptide fragment of alpha-MSH studied preclinically for anti-inflammatory signaling.</p>
+              
+              <a href="research/kpv.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="skinhair" data-name="klow">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>KLOW</h3>
+              <p>A blend combining KPV, GHK-Cu, BPC-157, and TB-500 — four peptides each studied separately in preclinical research.</p>
+              
+              <a href="research/klow.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="neuro">
+          <h2>Neuro / Signaling Research</h2>
+          <p class="cat-desc">Peptides studied for effects on growth-hormone signaling, stress response, and cognitive pathways.</p>
+          <div class="grid">
+            <div class="card" data-cat="neuro" data-name="ipamorelin">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Ipamorelin</h3>
+              <p>A selective growth-hormone secretagogue studied for its effects on growth hormone release.</p>
+              
+              <a href="research/ipamorelin.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="neuro" data-name="cjc-1295 / ipamorelin">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>CJC-1295 / Ipamorelin</h3>
+              <p>A combination of a GHRH analog (CJC-1295) and a growth-hormone secretagogue (ipamorelin), studied together for additive effects on growth hormone release.</p>
+              
+              <a href="research/cjc-1295-ipamorelin.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="neuro" data-name="tesamorelin">
+              <div class="swatch"></div>
+              <span class="tag">FDA-APPROVED FOR A SPECIFIC USE</span>
+              <h3>Tesamorelin</h3>
+              <p>A GHRH analog FDA-approved under the brand name Egrifta for reducing excess abdominal fat in HIV-associated lipodystrophy.</p>
+              
+              <a href="research/tesamorelin.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="neuro" data-name="selank">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Selank</h3>
+              <p>A synthetic peptide developed in Russia and studied there for anxiolytic and nootropic effects; not FDA-approved.</p>
+              
+              <a href="research/selank.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="neuro" data-name="semax">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Semax</h3>
+              <p>A synthetic peptide developed in Russia and studied there for cognitive and neuroprotective effects; not FDA-approved.</p>
+              
+              <a href="research/semax.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="hormone">
+          <h2>Reproductive & Hormone Signaling Research</h2>
+          <p class="cat-desc">Peptides studied for roles in sexual function and reproductive hormone signaling.</p>
+          <div class="grid">
+            <div class="card" data-cat="hormone" data-name="pt-141 / bremelanotide">
+              <div class="swatch"></div>
+              <span class="tag">FDA-APPROVED FOR A SPECIFIC USE</span>
+              <h3>PT-141 / Bremelanotide</h3>
+              <p>A melanocortin receptor agonist FDA-approved under the brand name Vyleesi for hypoactive sexual desire disorder in premenopausal women.</p>
+              
+              <a href="research/pt-141-bremelanotide.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="hormone" data-name="kisspeptin">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Kisspeptin</h3>
+              <p>A naturally occurring hormone studied for its central role in regulating reproductive hormone signaling.</p>
+              
+              <a href="research/kisspeptin.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+        <div class="category-block" data-category="support">
+          <h2>Research Support</h2>
+          <p class="cat-desc">Common laboratory and compounding adjuncts referenced in research contexts.</p>
+          <div class="grid">
+            <div class="card" data-cat="support" data-name="vitamin b12">
+              <div class="swatch"></div>
+              <span class="tag">FDA-APPROVED FOR A SPECIFIC USE</span>
+              <h3>Vitamin B12</h3>
+              <p>An essential vitamin available both as an FDA-regulated prescription injectable for diagnosed deficiency and as an over-the-counter dietary supplement.</p>
+              
+              <a href="research/vitamin-b12.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="support" data-name="lipo-c">
+              <div class="swatch"></div>
+              <span class="tag">NOT FDA-APPROVED FOR ANY USE</span>
+              <h3>Lipo-C</h3>
+              <p>A name commonly used for injectable lipotropic-nutrient blends; formulations vary and are not FDA-approved as weight-loss drugs.</p>
+              
+              <a href="research/lipo-c.html" class="card-link">READ THE RESEARCH →</a>
+            </div>
+            <div class="card" data-cat="support" data-name="bacteriostatic water">
+              <div class="swatch"></div>
+              <span class="tag">FDA-APPROVED FOR A SPECIFIC USE</span>
+              <h3>Bacteriostatic Water</h3>
+              <p>Sterile water containing a small amount of benzyl alcohol, FDA-regulated as a multi-dose diluent for pharmaceutical and laboratory reconstitution.</p>
+              
+              <a href="research/bacteriostatic-water.html" class="card-link">READ THE RESEARCH →</a>
+            </div></div>
+        </div>
+    </div>
+    <p class="placeholder-note" id="noResults" style="display:none;">No topics match your search.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="index.html" class="brand-mark">
+        <span class="name">PEPPY LITTLE SECRET</span>
+        <span class="sub">To Feeling Good</span>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="research-library.html">Research Library</a>
+        <a href="journal.html">The Journal</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <strong>Educational information only.</strong> Content on this site about investigational or research-use compounds is provided for general education and is not intended to diagnose, treat, cure, or prevent any disease. It is not medical advice, and it is not intended to promote, instruct, or provide guidance on the personal use, dosing, reconstitution, administration, or acquisition of any substance. Regulatory status, permitted uses, and legal requirements vary by compound and jurisdiction and may change; consult qualified professionals and current regulatory sources for guidance specific to your situation.
+    </div>
+    <div class="foot-bottom">To Feeling Good ♡</div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
