@@ -6,7 +6,7 @@
    CONFIG — EDIT THIS SECTION ONLY
    ------------------------------------------------------------ */
 const PEPPY_CONFIG = {
-  MENU_DOC_URL: "/peppy-research-menu.pdf",
+  MENU_DOC_URL: "/Peppy%20Little%20Secret%20%E2%80%94%20Research%20Menu.pdf",
   WHATSAPP_NUMBER: "19152691693",
   WHATSAPP_MESSAGE: "Hi! I found Peppy Little Secret and had a question. 🤎"
 };
