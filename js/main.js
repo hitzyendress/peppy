@@ -6,7 +6,7 @@
    CONFIG — EDIT THIS SECTION ONLY
    ------------------------------------------------------------ */
 const PEPPY_CONFIG = {
-  MENU_DOC_URL: "https://docs.google.com/document/d/1_ung_6zDAxQi7HPWs_VQ_C1Sn5NKnwrmwB4dMuDFXgM/edit",
+  MENU_DOC_URL: "/peppy-research-menu.pdf",
   WHATSAPP_NUMBER: "19152691693",
   WHATSAPP_MESSAGE: "Hi! I found Peppy Little Secret and had a question. 🤎"
 };
