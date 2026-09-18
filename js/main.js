@@ -29,10 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
     link.href = PEPPY_CONFIG.MENU_DOC_URL;
   });
 
-  /* Set Chat With Us link */
-  var chatUrl = "https://wa.me/" + PEPPY_CONFIG.WHATSAPP_NUMBER + "?text=" + encodeURIComponent(PEPPY_CONFIG.WHATSAPP_MESSAGE);
-  document.querySelectorAll(".js-chat-link").forEach(function(link) {
-    link.href = chatUrl;
-  });
+ var chatUrl = "https://chat.whatsapp.com/DhNJEreQijb4PKKtCzz44q?s=cl&p=i&mlu=0&ilr=4";
+document.querySelectorAll(".js-chat-link").forEach(function(link) {
+  link.href = chatUrl;
+});
 
 });
